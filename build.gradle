@@ -1,0 +1,36 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.airtasker'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile('org.springframework.boot:spring-boot-starter-security')
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+	testCompile group: 'org.springframework.security', name: 'spring-security-test', version: '4.0.0.RELEASE'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+
+springBoot {
+	mainClassName = 'com.airtasker.challenge.RatelimiterApplication'
+}
+
+
+test {
+	useJUnitPlatform()
+}
